@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            //Функция, удаляющая лишние запятые
+            function isCorrect(str){
+                String(str);
+                let str_length = str.length;
+                for (var i = 0; i < str_length; i++) {
+                    if (str[i] == ',') {
+                        str = str.slice(0, i) + str.slice(i + 1);
+                        i--;
+                    }
+                }
+                str = Number(str)
+               
+                return str
+            }
+
+            //Функция, определяющая, являются ли входные данные массивом
+            function isArray(str) {
+                String(str);
+                console.log(str);
+                x = false;
+                for (let i in str) {
+                    if (str[i] == ';') {
+                        x = true;
+                    }
+                }
+                return x;
+            }
+
+            //Функция для проведения операций только над числами
+            function CommonNumbers(operation, number1, number2){
+                switch (operation) {
+                    case '+':
+                        var result = (Number(number1) + Number(number2));
+                        alert(Number(result));
+                        break;
+                    case '-':
+                        var result = (Number(number1) - Number(number2));
+                        alert(Number(result));
+                        break;
+                    case '*':
+                        var result = (Number(number1) * Number(number2));
+                        alert(Number(result));
+                        break;
+                    case '/':
+                        var result = (Number(number1) / Number(number2));
+                        alert(Number(result));
+                        break;
+                    case 'возвести в степень':
+                        var result = pow(number1,number2);
+                        alert(Number(result));
+                        break;
+                    case 'наименьшее число':
+                        if (number1 > number2) alert('Наименьшее число:'+(number2))
+                        else if (number1 == number2) alert('Числа равны')
+                        else alert('Наименьшее число:'+(number1));
+                        break;
+                    case 'наибольшее число':
+                        if (number1 > number2) alert('Наибольшее число:'+(number1))
+                        else if (num1 == num2) alert('Числа равны');
+                        else alert('Наименьшее число:'+(number2));
+                        break;
+                    case 'выход':
+                        break;
+                }
+            }
+
+            //Функция, выполняющая действия над массивом
+            function ForArray(operation, arr1){
+                switch (operation) {
+                    case 'сортировка':
+                        arr1.sort();
+                        alert(arr1);
+                        break;
+                    case 'инвертирование':
+                        arr1.reverse();
+                        alert(arr1);
+                        break;
+                    case 'выход':
+                        break;
+                }
+            }
+
+            while (true) {
+                var num1 = prompt('Введите первое число');
+                if (num1 == 'выход') break;
+
+                if ( isFinite(num1) ) num1 = isCorrect(num1);
+                
+                
+                if ( isFinite(num1) || isArray(num1) ){
+
+                    var num2 = prompt('Введите второе число');
+                    if (num2 == 'выход') break;
+                    if ( isFinite(num2) ) num2 = isCorrect(num2);
+                    
+                    if ( isFinite(num2) || isArray(num2) ) {
+
+                        if ( isArray(num2) && isFinite(num1) ){
+                            var arr = num2.split(';');
+                            arr.unshift(num1);
+                        }
+                        else if ( isArray(num2) && isArray(num1) ) {
+                            var arr = num1.split(';');
+                            var arr2 = num2.split(';');
+                            arr = arr.concat(arr2);
+                            console.log(arr);
+                        }
+                        else if ( isArray(num1) && isFinite(num2) ){
+                            var arr = num1.split(';');
+                            arr.push(num2);
+                        }
+
+                        if ( isFinite(num1) && isFinite(num2) ) {
+                            var not_array = prompt('Введите операцию, которую хотите произвести: + | - | * | / | возвести в степень | наименьшее число | наибольшее число | сортировка | инвертирование | выход');
+                            if ( (not_array == 'инвертирование') || (not_array == 'сортировка') ){
+                                var its_awful = [];
+                                its_awful.push(num1,num2);
+                                console.log(its_awful);
+                                ForArray(for_array, its_awful);
+                            }
+                            else CommonNumbers(not_array,num1,num2);
+                        }
+                        else {
+                            var for_array = prompt('Введите операцию, которую хотите произвести: сортировка | инвертирование | выход');
+                            ForArray(for_array, arr);
+                            if (for_array != 'сортировка' && for_array != 'инвертирование' && for_array != 'выход') {
+                                alert('Невозможно выполнить действие');
+                                break;
+                            }
+                            else if (for_array == 'выход') break;
+                        }
+
+                    } else {
+                        alert('второе значение не числовое');
+                        console.log(typeof (num2));
+                    }
+                    
+                } else {
+                    alert('первое значение не числовое')
+                    console.log(typeof (num1));
+                }
+ 
+                var loop = confirm('Желаете произвести операции над новыми числами?');
+                if (loop == false) break;
+            }
+        </script>
+    </body>
+</html>

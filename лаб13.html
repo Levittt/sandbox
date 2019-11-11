@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var Calculator = {
+                num1: 0,
+                num2: 0,
+
+                sum() {
+                    document.write( Number(this.num1) + Number(this.num2) );
+                },
+
+                difference() {
+                    document.write( Number(this.num1) - Number(this.num2) );
+                },
+
+                multiplication() {
+                    document.write( Number(this.num1) * Number(this.num2) );
+                },
+
+                division() {
+                    document.write( Number(this.num1) / Number(this.num2) );
+                },
+
+                largest() {
+                    console.log(this.num1,this.num2);
+                    if ( Number(this.num1) > Number(this.num2) ) document.write( 'Наибольшее число: '+(this.num1) );
+                    else if ( Number(this.num1) == Number(this.num1) ) document.write('Числа равны');
+                    else document.write( 'Наибольшее число:'+(this.num2) );
+                },
+
+                smallest() {
+                    if ( Number(this.num1) > Number(this.num2) ) document.write('Наименьшее число: '+(this.num2) )
+                    else if ( Number(this.num1) == Number(this.num2) ) document.write('Числа равны');
+                    else document.write( 'Наименьшее число:'+(this.num1) );
+                }, 
+
+                pow() {
+                    document.write( Number(this.num1) ** Number(this.num2) );
+                }
+            }
+
+            Calculator.num1 = prompt('Введите первое число');
+            Calculator.num2 = prompt('Введите второе число');
+
+            var operation = prompt('Введите операцию, которую хотите произвести: + | - | * | / | возвести в степень | наименьшее число | наибольшее число | выход');
+
+            switch (operation) {
+                    case '+':
+                        Calculator.sum();
+                        break;
+                    case '-':
+                        Calculator.difference();
+                        break;
+                    case '*':
+                        Calculator.multiplication();
+                        break;
+                    case '/':
+                        Calculator.division();
+                        break;
+                    case 'возвести в степень':
+                        Calculator.pow();
+                        break;
+                    case 'наименьшее число':
+                        Calculator.smallest();
+                        break;
+                    case 'наибольшее число':
+                        Calculator.largest();
+                        break;
+                    case 'выход':
+                        break;
+                };
+
+        </script>
+    </body>
+</html>

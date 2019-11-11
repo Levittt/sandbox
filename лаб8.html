@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            var num1 = prompt("Введите первое число");
+            
+            if (isFinite(num1)) {
+            
+                var num2 = prompt ("Введите второе число");
+                
+                if (isFinite(num2)) document.write (Number(num1)+Number(num2));
+                else {
+                    alert ('второе значение не числовое');
+                    alert(typeof(num2));
+                    }            
+            } else {
+                alert ('первое значение не числовое')
+                alert(typeof(num1));
+                    }
+        </script>
+    </body>
+</html>
